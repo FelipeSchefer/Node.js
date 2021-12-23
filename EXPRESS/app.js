@@ -1,16 +1,18 @@
 const express = require('express')
-
+const bodyParser = require('body-parser')
+const path = require('path')
 const app = express()
 
-app.use('/add-product',(req, res, next)=>{
- console.log('In the middleware')
- res.send('<h1>The "Add product" page</h1>')
- next()
-})
+const adminRoutes = require('./routes/admin')
+const shopRoutes = require('./routes/shop')
 
-app.use('/',(req, res, next)=>{
- console.log('another middleware')
- res.send('<h1>Hello from Express</h1>')
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.static(path.join(__dirname, 'public'))) // when we use the Folder "public" to style our css we have to add this piece of code so it can work on the browser 
+
+app.use('/admin', adminRoutes)
+app.use(shopRoutes)
+app.use((req, res, next)=>{
+ res.status(404).sendFile(path.join(__dirname, './','views', '404.html'))
 })
 
 app.listen(3000)
