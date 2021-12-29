@@ -1,6 +1,9 @@
-const http = require('http')
-const routes = require('./routes')
+const http = require('http');
 
-console.log(routes.someText)
-const server = http.createServer(routes.handler)
+const routes = require('./routes');
+
+console.log(routes.someText);
+
+const server = http.createServer(routes.handler);
+
 server.listen(3000);
