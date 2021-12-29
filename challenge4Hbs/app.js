@@ -6,7 +6,11 @@ const app = express();
 
 const users = [];
 
-app.engine('hbs', engine({ defaultLayout: 'main-layout', extname: 'hbs' })); // I had to extract engine from 'express-handlebars' instead using it in a variable like const expressHbs = require('express-handlebar')
+// I had to extract engine from 'express-handlebars' instead using it in a variable like const expressHbs = require('express-handlebar')
+app.engine('hbs', engine({
+ defaultLayout: 'main-layout',
+ extname: 'hbs' 
+})); 
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 
