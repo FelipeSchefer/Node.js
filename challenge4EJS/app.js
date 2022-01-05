@@ -32,12 +32,12 @@ app.use(bodyParser.urlencoded({extended: false}))
 // });
 
 /* this code below is routing the routes folder */
-const userData = require('./routes/index')
-const userRoutes = require('./routes/users')
+const userRoutes = require('./routes/index')
+const userList = require('./routes/users')
 const pageNotFound = require('./routes/404')
 
-app.use(userData.routes)
 app.use(userRoutes)
+app.use(userList)
 app.use(pageNotFound.routesError)
 
 app.listen(3000)

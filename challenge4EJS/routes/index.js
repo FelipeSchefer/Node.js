@@ -1,20 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const usersController = require('../controllers/usersController')
 
-const users = []
+router.get('/users', usersController.getAddUser)
 
-router.get('/users', (req, res, next) =>{
- res.render('users', {
-  pageTitle: 'Users',
-  users: users
- })
-})
+router.post('/add-user', usersController.postAddUser)
 
-router.post('/add-user', (req, res, next) =>{
- users.push({name: req.body.username})
- res.redirect('/users')
-})
-
-
-exports.routes = router
-exports.users = users
+module.exports = router
