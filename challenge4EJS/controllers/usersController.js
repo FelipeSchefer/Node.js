@@ -1,17 +1,26 @@
-const users = []
+const User = require('../models/userModel')
 
-exports.getAddUser = (req, res, next) =>{
- res.render('users', {
-  pageTitle: 'Users',
-  users: users
+exports.getAddUser =(req, res, next)=>{
+ res.render('add-user', {
+  pageTitle: 'Add User'
  })
 }
 
 exports.postAddUser = (req, res, next) =>{
- users.push({name: req.body.username})
- res.redirect('/users')
+ const user = new User(req.body.username)
+ user.save()
+ console.log(user)
+ res.redirect('/')
 }
 
-exports.getUser =(req, res, next)=>{
- res.render('index', {pageTitle: 'Add User'})
+exports.getUser = (req, res, next) =>{
+ User.fetchAll(users => {
+  res.render('users', {
+   pageTitle: 'Users',
+   users: users
+  })
+ })
 }
+
+
+

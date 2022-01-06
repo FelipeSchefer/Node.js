@@ -1,8 +1,8 @@
+const usersController = require('../controllers/usersController')
 const express = require('express')
 const router = express.Router()
-const usersController = require('../controllers/usersController')
 
-router.get('/users', usersController.getAddUser)
+router.get('/add-user', usersController.getAddUser)
 
 router.post('/add-user', usersController.postAddUser)
 
