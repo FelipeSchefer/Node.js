@@ -4,9 +4,9 @@
  <h1>Users</h1>
  <% if(users.length > 0) { %>
   <ul>
-   <!-- <% users.forEach((user) => { %> -->
-    <li><%= users.name %></li>
-   <!-- <% }) %>  -->
+   <% users.forEach((u) => { %>
+    <li><%= u.user %></li>
+   <% }) %> 
   </ul>
  <% } else { %>
   <h1>No User found</h1>
