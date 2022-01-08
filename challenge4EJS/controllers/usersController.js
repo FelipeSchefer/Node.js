@@ -9,7 +9,7 @@ exports.getAddUser =(req, res, next)=>{
 exports.postAddUser = (req, res, next) =>{
  const user = new User(req.body.username)
  user.save()
- console.log(user)
+ console.log('console.log',user)
  res.redirect('/')
 }
 
