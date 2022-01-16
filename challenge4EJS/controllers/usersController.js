@@ -1,7 +1,7 @@
 const User = require('../models/userModel')
 
 exports.getAddUser =(req, res, next)=>{
- res.render('add-user', {
+ res.render('admin/add-user', {
   pageTitle: 'Add User'
  })
 }
@@ -15,7 +15,7 @@ exports.postAddUser = (req, res, next) =>{
 
 exports.getUser = (req, res, next) =>{
  User.fetchAll(users => {
-  res.render('users', {
+  res.render('user/users', {
    pageTitle: 'Users',
    users: users
   })
