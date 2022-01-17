@@ -1,30 +1,24 @@
-const User = require('../models/userModel')
+const Account = require('../models/accountModel')
 
-exports.getAddUser =(req, res, next)=>{
- res.render('admin/add-user', {
-  pageTitle: 'Add User'
+exports.getAddAccounts =(req, res, next)=>{
+ res.render('admin/add-account', {
+  pageTitle: 'Add Account',
+  path: '/admin/add-account'
  })
 }
 
-exports.postAddUser = (req, res, next) =>{
- const user = new User(req.body.username)
- user.save()
+exports.postAddAccounts = (req, res, next) =>{
+ const account = new Account(req.body.accountName, req.body.accountNumber)
+ account.save()
  res.redirect('/')
 }
 
-exports.getEditUser = (req, res, next) => {
- res.render('admin/edit-user',{
-  pageTitle: 'Edit User',
-  path: '/admin/edit-user'
- })
-}
-
-exports.getUsers = (req, res, next) => {
- User.fetchAll((user)=>{
-  res.render('admin/users',{
-   users: user,
-   pageTitle: 'Admin User',
-   path: '/admin/users'
+exports.getAccounts = (req, res, next) => {
+ Account.fetchAll((accounts)=>{
+  res.render('admin/accounts',{
+   accts: accounts,
+   pageTitle: 'Admin Account',
+   path: '/admin/accounts'
   })
  })
 }

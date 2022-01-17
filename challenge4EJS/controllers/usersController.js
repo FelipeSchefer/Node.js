@@ -1,35 +1,41 @@
-const User = require('../models/userModel')
+const Account = require('../models/accountModel')
+
+exports.getAccounts = (req, res, next) =>{
+ Account.fetchAll(accounts => {
+  res.render('users/account-list', {
+   accts: accounts,
+   pageTitle: 'All Accounts',
+   path: '/accounts'
+  })
+ })
+}
+
+exports.getIndex = (req, res, next) => {
+ Account.fetchAll(accounts => {
+  res.render('users/index', {
+   accts: accounts,
+   pageTitle: 'Index',
+   path: '/'
+  })
+ })
+}
 
 exports.getCart = (req, res, next) => {
  res.render('users/cart',{
   pageTitle: 'Cart',
-  path: '/users/cart'
+  path: '/cart'
  })
 }
 
 exports.getCheckout = (req, res, next) => {
- res.render('users/checkout',{
+ res.render('checkout',{
   pageTitle: 'Checkout',
-  path: '/users/checkout'
+  path: '/checkout'
  })
 }
 
-exports.getUserDetail = (req, res, next) => {
- res.render('users/user-detail', {
-  pageTitle: 'User Detail',
-  path: '/users/user-detail'
- })
-}
 
-exports.getUser = (req, res, next) =>{
- User.fetchAll(users => {
-  res.render('users/users', {
-   pageTitle: 'Users',
-   users: users,
-   path: '/users/users'
-  })
- })
-}
+
 
 
 

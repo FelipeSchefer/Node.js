@@ -4,10 +4,10 @@ const fs = require('fs')
 const p = path.join(
  path.dirname(require.main.filename),
  'data',
- 'users.json'
+ 'accounts.json'
 )
 
-const getUsersFromFile = callback =>{
+const getAccountsFromFile = callback =>{
  fs.readFile(p, (err, fileContent)=>{
   if(err){
    callback([])
@@ -17,21 +17,22 @@ const getUsersFromFile = callback =>{
  })
 }
 
-module.exports = class User {
- constructor(u){
-  this.user = u
+module.exports = class Account {
+ constructor(aNumber, aName){
+  this.accountNumber = aNumber
+  this.accountName = aName
  }
 
  save(){
-  getUsersFromFile(users =>{
-   users.push(this)
-   fs.writeFile(p, JSON.stringify(users), (err) => {
+  getAccountsFromFile(accounts =>{
+   accounts.push(this)
+   fs.writeFile(p, JSON.stringify(accounts), (err) => {
     console.log(err)
    })
   })
  }
 
  static fetchAll(callback){
-  getUsersFromFile(callback)
+  getAccountsFromFile(callback)
  }
 }
