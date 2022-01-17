@@ -1,26 +1,37 @@
 const User = require('../models/userModel')
 
-exports.getAddUser =(req, res, next)=>{
- res.render('admin/add-user', {
-  pageTitle: 'Add User'
+exports.getCart = (req, res, next) => {
+ res.render('users/cart',{
+  pageTitle: 'Cart',
+  path: '/users/cart'
  })
 }
 
-exports.postAddUser = (req, res, next) =>{
- const user = new User(req.body.username)
- user.save()
- console.log('console.log',user)
- res.redirect('/')
+exports.getCheckout = (req, res, next) => {
+ res.render('users/checkout',{
+  pageTitle: 'Checkout',
+  path: '/users/checkout'
+ })
+}
+
+exports.getUserDetail = (req, res, next) => {
+ res.render('users/user-detail', {
+  pageTitle: 'User Detail',
+  path: '/users/user-detail'
+ })
 }
 
 exports.getUser = (req, res, next) =>{
  User.fetchAll(users => {
-  res.render('user/users', {
+  res.render('users/users', {
    pageTitle: 'Users',
-   users: users
+   users: users,
+   path: '/users/users'
   })
  })
 }
+
+
 
 
 
