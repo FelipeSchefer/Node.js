@@ -17,8 +17,8 @@ exports.getAccounts = (req, res, next) => {
  Account.fetchAll((accounts)=>{
   res.render('admin/accounts',{
    accts: accounts,
-   pageTitle: 'Admin Account',
-   path: '/admin/accounts'
+   pageTitle: 'Admin Accounts',
+   path: '/admin-accounts'
   })
  })
 }
