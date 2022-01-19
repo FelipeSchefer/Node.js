@@ -8,6 +8,8 @@ router.get('/accounts', userController.getAccounts)
 
 router.get('/cart', userController.getCart)
 
+router.get('/orders', userController.getOrders)
+
 router.get('/checkout', userController.getCheckout)
 
 module.exports = router
