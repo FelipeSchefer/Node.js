@@ -1,16 +1,32 @@
 <%- include('../includes/head.ejs') %>
+</head>
 <body>
 <%- include('../includes/navigation.ejs') %>
  <h1>Account List</h1>
  <% if(accts.length > 0) { %>
-  <ul>
-   <% accts.forEach((aName) => { %>
-    <li><%= aName.accountName %></li>
+  <div>  
+   <% accts.forEach((account) => { %>
+   <ul>
+    <li>
+     <h4>
+      Name: <%= account.accountName %>
+     </h4>
+    </li>
+    <li>
+     <p>
+      Account number: <%= account.accountNumber %>
+     </p>
+    </li>
+   </ul>
+   <div>
+    <a href="/accunts/<%= account.id %>">Details</a>
+    <form action="/add-to-cart" method="POST">
+     <button type="submit">Add to the cart</button>
+    </form>
+   </div>
+   <hr/>
    <% }) %> 
-   <% accts.forEach((aNumber) => { %>
-    <li><%= aNumber.accountNumber %></li>
-   <% }) %> 
-  </ul>
+  </div>
  <% } else { %>
   <h1>Account List not found</h1>
  <% } %> 

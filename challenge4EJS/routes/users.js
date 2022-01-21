@@ -6,6 +6,8 @@ router.get('/', userController.getIndex)
 
 router.get('/accounts', userController.getAccounts)
 
+router.get('/accounts:accountId', userController.getAccount)
+
 router.get('/cart', userController.getCart)
 
 router.get('/orders', userController.getOrders)

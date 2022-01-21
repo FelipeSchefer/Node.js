@@ -8,7 +8,9 @@ exports.getAddAccounts =(req, res, next)=>{
 }
 
 exports.postAddAccounts = (req, res, next) =>{
- const account = new Account(req.body.accountName, req.body.accountNumber)
+ const accountName = req.body.accountName
+ const accountNumber = req.body.accountNumber
+ const account = new Account(accountName, accountNumber)
  account.save()
  res.redirect('/')
 }
@@ -18,7 +20,8 @@ exports.getAccounts = (req, res, next) => {
   res.render('admin/accounts',{
    accts: accounts,
    pageTitle: 'Admin Accounts',
-   path: '/admin-accounts'
+   path: '/admin/accounts'
+   // path: '/admin/admin-accounts'
   })
  })
 }

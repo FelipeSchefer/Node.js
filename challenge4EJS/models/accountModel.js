@@ -18,12 +18,13 @@ const getAccountsFromFile = callback =>{
 }
 
 module.exports = class Account {
- constructor(aNumber, aName){
-  this.accountNumber = aNumber
+ constructor(aName, aNumber){
   this.accountName = aName
+  this.accountNumber = aNumber
  }
 
  save(){
+  this.id = Math.random().toString()
   getAccountsFromFile(accounts =>{
    accounts.push(this)
    fs.writeFile(p, JSON.stringify(accounts), (err) => {
@@ -34,5 +35,12 @@ module.exports = class Account {
 
  static fetchAll(callback){
   getAccountsFromFile(callback)
+ }
+
+ static findById(id, callback){
+  getAccountsFromFile(accounts =>{
+   const account = accounts.find( a => a.id  === id)
+   callback(account)
+  })
  }
 }
