@@ -13,8 +13,11 @@ exports.getAccounts = (req, res, next) =>{
 
 exports.getAccount = (req, res, next) => {
  const acctId = req.params.accountId
- Product.findById(acctId, account => {
-  console.log(account)
+ Account.findById(acctId, account => {
+  res.render('users/account-detail', {
+   pageTitle: account.title,
+   account: account
+  })
  })
 }
 

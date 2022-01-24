@@ -2,5 +2,14 @@
 </head>
 <body>
  <%- include('../includes/navigation.ejs') %>
- <h1>User Detail</h1>
+ <main>
+  <h1><%= account.title%></h1>
+  <hr>
+  <h2><%= account.name %></h2>
+  <p><%= account.number%></p>
+
+ </main>
+
+
+
 <%- include('../includes/end.ejs') %>
