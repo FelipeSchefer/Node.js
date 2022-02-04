@@ -20,9 +20,7 @@
    </ul>
    <div>
     <a href="/accounts/<%= account.id %>">Details</a>
-    <form action="/add-to-cart" method="POST">
-     <button type="submit">Add to the cart</button>
-    </form>
+    <%- include('../includes/add-to-cart.ejs', {account: account}) %>
    </div>
    <hr/>
    <% }) %> 

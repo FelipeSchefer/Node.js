@@ -1,4 +1,3 @@
-const Product = require('../../EXPRESS/models/product')
 const Account = require('../models/accountModel')
 
 exports.getAccounts = (req, res, next) =>{
@@ -15,8 +14,9 @@ exports.getAccount = (req, res, next) => {
  const acctId = req.params.accountId
  Account.findById(acctId, account => {
   res.render('users/account-detail', {
+   account: account,
    pageTitle: account.title,
-   account: account
+   path: '/accounts'
   })
  })
 }
@@ -36,6 +36,12 @@ exports.getCart = (req, res, next) => {
   pageTitle: 'Cart',
   path: '/cart'
  })
+}
+
+exports.postCart = (req, res, next) => {
+ const accountId = req.body.accountId
+ console.log(accountId)
+ res.redirect('/cart')
 }
 
 exports.getOrders = (req, res, next) => {

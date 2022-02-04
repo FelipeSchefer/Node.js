@@ -5,9 +5,9 @@
  <main>
   <h1><%= account.title%></h1>
   <hr>
-  <h2><%= account.name %></h2>
-  <p><%= account.number%></p>
-
+  <h2>Name <%= account.accountName %></h2>
+  <p>Account <%= account.accountNumber%></p>
+  <%- include('../includes/add-to-cart.ejs', {account: account}) %>
  </main>
 
 
